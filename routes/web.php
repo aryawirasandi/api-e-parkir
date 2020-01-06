@@ -10,10 +10,15 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
+use Illuminate\Support\Str;
 
 $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->post('/register', 'AuthController@register');
     $router->post('/login', 'AuthController@login');
     $router->get('/get-all-parkiran','ParkiranController@allParkiran');
- 
+    // get key random
+    $router->get('key', function(){
+        return Str::random(32);
+    });
  });
+
